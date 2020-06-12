@@ -9,14 +9,17 @@ library('sjmisc')
 
 
 setwd("/Users/michaelgibson/Documents/GitHub/Conde-Naste")
-raw<-read.csv("raw_cn.csv")
+conde_nast<-read.csv("conde_nast.csv")
 
 
-raw$male<-ifelse(raw$gender=="Man (cisgender)"|raw$gender=="Man (transgender)",1,0)
-raw$straight<-ifelse(raw$sex_orien=="Straight",1,0)
-raw$cisgendered<-ifelse(raw$gender=="Man (cisgender)"|raw$gender=="Woman (cisgender)",1,0)
+conde_nast$male<-ifelse(conde_nast$gender=="Man (cisgender)"|conde_nast$gender=="Man (transgender)",1,0)
+conde_nast$straight<-ifelse(conde_nast$sexuality=="Straight",1,0)
+conde_nast$cisgendered<-ifelse(conde_nast$gender=="Man (cisgender)"|conde_nast$gender=="Woman (cisgender)",1,0)
 
-summary(raw$male)
-summary(raw$straight)
-summary(raw$cisgendered)
+summary(conde_nast$male)
+summary(conde_nast$straight)
+summary(conde_nast$cisgendered)
+
+
+
 

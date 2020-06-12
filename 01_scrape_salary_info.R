@@ -1,6 +1,12 @@
-library(rvest)
-library(tidyr)
-library(dplyr)
+rm(list=ls())
+
+library('dplyr')
+library('tidyr')
+library('rvest')
+library('ggplot2')
+library('tidyverse')
+
+
 setwd("/Users/michaelgibson/Documents/GitHub/Conde-Naste")
 conde_nast <- read_html("https://docs.google.com/spreadsheets/u/1/d/1YqdJCJ3LmtVIzxsgOj-YhE8fGBQ3zhuEkWp-_og2HEE/htmlview?pru=AAABcsoMglg*NgqVwN1JSbezwnZ9b6PYNg")
 
@@ -64,7 +70,9 @@ other <- conde_nast %>%
   html_text() %>%
   readr::parse_character()
 
-#combined <- data_frame(title, salary, gender, race, sex_orien, yrs_exp, yrs_role, add_comp, reports_dir, reports_ind, other)
+combined <- data_frame(title, salary, gender, race, sex_orien, yrs_exp, yrs_role, add_comp, reports_dir, reports_ind, other)
 
 raw <- data_frame(title, salary, gender, race, sex_orien, yrs_exp, yrs_role)
+
+
 write.csv(raw,'raw_cn.csv') 

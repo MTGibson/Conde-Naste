@@ -17,7 +17,7 @@ rowtitles<- cnast[c(2), ]
 raw<- cnast[-c(1,2), ]
 
 
-names(raw)[which(names(raw) == "HERE IS A GOOGLE FORM TO ADD YOUR INFO: https://forms.gle/i6QLjLwV3fR9XCkt9")] <- "title"
+names(raw)[which(names(raw) == "GOOGLE FORM TO ADD YOURS: https://forms.gle/i6QLjLwV3fR9XCkt9")] <- "title"
 names(raw)[which(names(raw) == "...2")] <- "salary"
 names(raw)[which(names(raw) == "...3")] <- "race"
 names(raw)[which(names(raw) == "...4")] <- "gender"

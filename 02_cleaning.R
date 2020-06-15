@@ -7,6 +7,7 @@ library('ggplot2')
 library('tidyverse')
 library('sjmisc')
 library('Hmisc')
+library('bbplot')
 
 setwd("/Users/michaelgibson/Documents/GitHub/Conde-Naste")
 conde_nast<-read.csv("conde_nast.csv")
@@ -15,12 +16,9 @@ conde_nast$white<-ifelse(conde_nast$race=="White"|conde_nast$race=="white"|conde
 conde_nast$male<-ifelse(conde_nast$gender=="Man (cisgender)"|conde_nast$gender=="Man (transgender)",1,0)
 conde_nast$straight<-ifelse(conde_nast$sexuality=="Straight",1,0)
 conde_nast$cisgendered<-ifelse(conde_nast$gender=="Man (cisgender)"|conde_nast$gender=="Woman (cisgender)",1,0)
+conde_nast$fulltime<-ifelse(conde_nast$employ_status=="Full-time",1,0)
 
-summary(conde_nast$white)
-summary(conde_nast$male)
-summary(conde_nast$straight)
-summary(conde_nast$cisgendered)
-summary(conde_nast$salary)
+
 
 conde_nast$white_lb<-factor(conde_nast$white,levels = c(0,1), labels = c("Non-white","White"))
 conde_nast$male_lb<-factor(conde_nast$male,levels = c(0,1), labels = c("Non-male","Male"))
@@ -43,19 +41,40 @@ summary(conde_nast$reports_ind)
 summary(conde_nast$reports_dir)
 summary(conde_nast$reports_any)
 summary(conde_nast$reports_total)
+summary(conde_nast$fulltime)
 
+conde_nast$salary_thou<-conde_nast$salary/1000
 
-c<-ggplot(data=conde_nast, aes(salary))
+c<-ggplot(data=conde_nast, aes(salary_thou))
 c1<-c+geom_density()
 c1
 
 c2<-c1+facet_grid(rows=vars(white_lb), cols=vars(male_lb))
+c3<-c2+bbc_style()+
+  labs(title="Conde Nast Salaries")+
+  theme(axis.title = element_text(size = 12))+
+  labs(x = "Salary, in 1,000 USDs", 
+         y = "Density")+
+  theme(
+    axis.ticks.x = element_line(colour = "#333333"), 
+    axis.ticks.length =  unit(0.26, "cm"))
 
-c2
 
-conde_nast$ln_salary<-ln(conde_nast$salary)
+c3
 
-model_1 <- lm(salary ~ white + male + straight + cisgendered+ yrs_exp+yrs_role,data=conde_nast)
+finalise_plot(plot_name=c3, source_name = "Conde Nast Salary Survey", save_filepath="/Users/michaelgibson/Documents/GitHub/Conde-Naste/salary.png", width_pixels = 640,
+              height_pixels = 450)
+
+
+model_1 <- lm(salary_thou ~ white + male + straight + cisgendered+ yrs_exp+yrs_role,data=conde_nast)
 summary(model_1)
+
+
+model_2 <- lm(salary_thou ~ white + male + straight + cisgendered+ yrs_exp+yrs_role+reports_total,data=conde_nast)
+summary(model_2)
+
+
+
+
 
 

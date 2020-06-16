@@ -32,6 +32,17 @@ conde_nast$reports_dir<-ifelse(conde_nast$reports_dir=="NULL",0,conde_nast$repor
 conde_nast$reports_any<-ifelse(conde_nast$reports_dir>0 | conde_nast$reports_ind>0,1,0)
 conde_nast$reports_total<-conde_nast$reports_dir+conde_nast$reports_ind
 
+conde_nast$additonal_comp<-as.character(conde_nast$additonal_comp)
+conde_nast$additonal_comp<-ifelse(conde_nast$additonal_comp=="none"|
+                                    conde_nast$additonal_comp=="None"|
+                                    conde_nast$additonal_comp=="N/A"|
+                                    conde_nast$additonal_comp=="0"|
+                                    conde_nast$additonal_comp=="n/a",
+                                    NA,conde_nast$additonal_comp)
+
+conde_nast$add_comp_any<-ifelse(is.na(conde_nast$additonal_comp),0,1)
+
+
 summary(conde_nast$white)
 summary(conde_nast$male)
 summary(conde_nast$straight)
@@ -73,8 +84,52 @@ summary(model_1)
 model_2 <- lm(salary_thou ~ white + male + straight + cisgendered+ yrs_exp+yrs_role+reports_total,data=conde_nast)
 summary(model_2)
 
+summary(subset(conde_nast, conde_nast$white==1)$reports_total)
+summary(subset(conde_nast, conde_nast$white==0)$reports_total)
+summary(subset(conde_nast, conde_nast$male==1)$reports_total)
+summary(subset(conde_nast, conde_nast$male==0)$reports_total)
+summary(subset(conde_nast, conde_nast$straight==1)$reports_total)
+summary(subset(conde_nast, conde_nast$straight==0)$reports_total)
+summary(subset(conde_nast, conde_nast$cisgendered==1)$reports_total)
+summary(subset(conde_nast, conde_nast$cisgendered==0)$reports_total)
+
+summary(subset(conde_nast, conde_nast$white==1)$reports_any)
+summary(subset(conde_nast, conde_nast$white==0)$reports_any)
+summary(subset(conde_nast, conde_nast$male==1)$reports_any)
+summary(subset(conde_nast, conde_nast$male==0)$reports_any)
+summary(subset(conde_nast, conde_nast$straight==1)$reports_any)
+summary(subset(conde_nast, conde_nast$straight==0)$reports_any)
+summary(subset(conde_nast, conde_nast$cisgendered==1)$reports_any)
+summary(subset(conde_nast, conde_nast$cisgendered==0)$reports_any)
+
+summary(subset(conde_nast, conde_nast$white==1)$reports_any)
+summary(subset(conde_nast, conde_nast$white==0)$reports_any)
+summary(subset(conde_nast, conde_nast$male==1)$reports_any)
+summary(subset(conde_nast, conde_nast$male==0)$reports_any)
+summary(subset(conde_nast, conde_nast$straight==1)$reports_any)
+summary(subset(conde_nast, conde_nast$straight==0)$reports_any)
+summary(subset(conde_nast, conde_nast$cisgendered==1)$reports_any)
+summary(subset(conde_nast, conde_nast$cisgendered==0)$reports_any)
+
+summary(subset(conde_nast, conde_nast$white==1)$add_comp_any)
+summary(subset(conde_nast, conde_nast$white==0)$add_comp_any)
+summary(subset(conde_nast, conde_nast$male==1)$add_comp_any)
+summary(subset(conde_nast, conde_nast$male==0)$add_comp_any)
+summary(subset(conde_nast, conde_nast$straight==1)$add_comp_any)
+summary(subset(conde_nast, conde_nast$straight==0)$add_comp_any)
+summary(subset(conde_nast, conde_nast$cisgendered==1)$add_comp_any)
+summary(subset(conde_nast, conde_nast$cisgendered==0)$add_comp_any)
 
 
+model_1 <- lm(salary_thou ~ white + male + straight + cisgendered,data=conde_nast)
+
+
+model_2 <- lm(salary_thou ~ white + male + straight + cisgendered+ yrs_exp+yrs_role,data=conde_nast)
+
+model_3 <- lm(salary_thou ~ white + male + straight + cisgendered+ yrs_exp+yrs_role+reports_total+fulltime,data=conde_nast)
+
+
+stargazer::stargazer(model_1,model_2,model_3, title="Predicting Salary", omit.stat=c("adj.rsq", "ser","f"), dep.var.labels=c("Salary in 1,000s USD"), covariate.labels=c("White","Male","Straight","Cisgendered","Years of Experience","Years in Current Role","Total reports","Full Time")))
 
 
 

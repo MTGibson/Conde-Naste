@@ -1,0 +1,110 @@
+\documentclass[12pt]{article}         % the type of document and font size (default 10pt)
+\usepackage[margin=1.0in]{geometry}   % sets all margins to 1in, can be changed
+\usepackage{moreverb}                 % for verbatimtabinput -- LaTeX environment
+\usepackage{url}                      % for \url{} command
+\usepackage{amssymb}                  % for many mathematical symbols
+\usepackage{float}                  % for locking figures in place
+\usepackage[pdftex]{lscape}           % for landscaped tables
+\usepackage{longtable}    % for tables that break over multiple pages
+\usepackage[paper=portrait,pagesize]{typearea}
+
+\usepackage{graphicx} 
+\usepackage{subcaption} %  for subfigures environments 
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{lipsum}
+%\setlength\headheight{26pt} 
+%\rhead{\includegraphics[width=4.25cm]{jpal_logo.png}}
+\renewcommand{\headrulewidth}{0pt}
+
+
+\pagestyle{plain}
+
+\title{Conde Nast Salary Report}  % to specify title
+\author{Mike Gibson}          % to specify author(s)
+\usepackage{Sweave}
+\begin{document} % document begins here
+
+\input{report-concordance}
+
+% If .nw file contains graphs: To specify that EPS/PDF graph files are to be 
+% saved to 'graphics' sub-folder
+%     NOTE: 'graphics' sub-folder must exist prior to Sweave step
+%\SweaveOpts{prefix.string=graphics/plot}
+
+% If .nw file contains graphs: to modify (shrink/enlarge} size of graphics 
+% file inserted
+%         NOTE: can be specified/modified before any graph chunk
+\setkeys{Gin}{width=.60\textwidth}
+
+\maketitle              % makes the title
+
+\tableofcontents        % inserts TOC (section, sub-section, etc numbers and titles)
+%\listoftables           % inserts LOT (numbers and captions)
+%\listoffigures          % inserts LOF (numbers and captions)
+%                        %     NOTE: graph chunk must be wrapped with \begin{figure}, 
+%                        %  \end{figure}, and \caption{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Where everything else goes
+
+
+
+\bigskip   % leave some empty space (optional)
+
+\section{Salary}
+
+
+\includegraphics{report-002}
+
+
+
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Mon, Jun 15, 2020 - 22:09:13
+\begin{table}[!htbp] \centering 
+  \caption{Predicting Salary} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{3}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-4} 
+\\[-1.8ex] & \multicolumn{3}{c}{Salary in 1,000s USD} \\ 
+\\[-1.8ex] & (1) & (2) & (3)\\ 
+\hline \\[-1.8ex] 
+ White & 0.886 & 0.944 & $-$0.544 \\ 
+  & (4.031) & (4.003) & (3.835) \\ 
+  & & & \\ 
+ Male & 17.623$^{***}$ & 14.216$^{***}$ & 15.544$^{***}$ \\ 
+  & (4.427) & (4.513) & (4.333) \\ 
+  & & & \\ 
+ Straight & 7.084 & 5.551 & 6.978 \\ 
+  & (4.550) & (4.533) & (4.358) \\ 
+  & & & \\ 
+ Cisgendered & 19.838$^{*}$ & 20.609$^{**}$ & 16.366$^{*}$ \\ 
+  & (10.329) & (10.222) & (9.797) \\ 
+  & & & \\ 
+ Years of Experience &  & $-$0.578 & $-$0.200 \\ 
+  &  & (0.361) & (0.351) \\ 
+  & & & \\ 
+ Years in Current Role &  & 2.754$^{***}$ & 2.628$^{***}$ \\ 
+  &  & (1.050) & (1.013) \\ 
+  & & & \\ 
+ Total reports &  &  & 2.838$^{***}$ \\ 
+  &  &  & (0.498) \\ 
+  & & & \\ 
+ Full Time &  &  & $-$0.647 \\ 
+  &  &  & (6.425) \\ 
+  & & & \\ 
+ Constant & 55.029$^{***}$ & 57.246$^{***}$ & 49.161$^{***}$ \\ 
+  & (9.889) & (10.611) & (11.464) \\ 
+  & & & \\ 
+\hline \\[-1.8ex] 
+Observations & 331 & 331 & 331 \\ 
+R$^{2}$ & 0.070 & 0.098 & 0.181 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{3}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table} 
+
+\end{document}

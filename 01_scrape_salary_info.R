@@ -10,7 +10,7 @@ library("googlesheets4")
 
 setwd("/Users/michaelgibson/Documents/GitHub/Conde-Naste")
 
-#gs4_browse("https://docs.google.com/spreadsheets/u/1/d/1YqdJCJ3LmtVIzxsgOj-YhE8fGBQ3zhuEkWp-_og2HEE/htmlview?pru=AAABcsoMglg*NgqVwN1JSbezwnZ9b6PYNg")
+gs4_browse("https://docs.google.com/spreadsheets/u/1/d/1YqdJCJ3LmtVIzxsgOj-YhE8fGBQ3zhuEkWp-_og2HEE/htmlview?pru=AAABcsoMglg*NgqVwN1JSbezwnZ9b6PYNg")
 cnast<-range_read("https://docs.google.com/spreadsheets/u/1/d/1YqdJCJ3LmtVIzxsgOj-YhE8fGBQ3zhuEkWp-_og2HEE/htmlview?pru=AAABcsoMglg*NgqVwN1JSbezwnZ9b6PYNg")	
 
 rowtitles<- cnast[c(2), ]
@@ -38,3 +38,4 @@ conde_nast <- apply(conde_nast,2,as.character)
 
 
 write.csv(conde_nast,'conde_nast.csv') 
+

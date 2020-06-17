@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  15 JUN 2020 22:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  16 JUN 2020 22:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -729,8 +729,8 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <report-002.pdf, id=2, 433.62pt x 433.62pt>
 File: report-002.pdf Graphic file (type pdf)
 <use report-002.pdf>
-Package pdftex.def Info: report-002.pdf  used on input line 57.
-(pdftex.def)             Requested size: 268.8813pt x 268.89455pt.
+Package pdftex.def Info: report-002.pdf  used on input line 58.
+(pdftex.def)             Requested size: 358.50612pt x 358.52167pt.
 
 [1
 
@@ -739,7 +739,7 @@ t-002.pdf>] [2] (./report.aux) )
 Here is how much of TeX's memory you used:
  15982 strings out of 492616
  287318 string characters out of 6129482
- 499322 words of memory out of 5000000
+ 501322 words of memory out of 5000000
  19731 multiletter control sequences out of 15000+600000
  558285 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -753,7 +753,7 @@ c/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmti12.pfb>
-Output written on report.pdf (2 pages, 98993 bytes).
+Output written on report.pdf (2 pages, 98687 bytes).
 PDF statistics:
  51 PDF objects out of 1000 (max. 8388607)
  35 compressed objects within 1 object stream

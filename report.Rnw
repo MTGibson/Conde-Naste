@@ -96,16 +96,21 @@ c1
 c2<-c1+facet_grid(rows=vars(white_lb), cols=vars(male_lb))
 c3<-c2+bbc_style()+
   labs(title="Conde Nast Salaries")+
-  theme(axis.title = element_text(size = 12))+
+  theme(axis.title = element_text(size = 10))+
   labs(x = "Salary, in 1,000 USDs", 
          y = "Density")+
   theme(
     axis.ticks.x = element_line(colour = "#333333"), 
-    axis.ticks.length =  unit(0.26, "cm"))
+    axis.ticks.length =  unit(0.26, "cm"))+
+  theme(
+    axis.text.x = element_text(size=10),
+    axis.text.y = element_text(size=10)
+  )
 
 
 @
 
+\setkeys{Gin}{width=.8\textwidth}
 
 <<echo = FALSE, fig = TRUE>>=
 
@@ -121,12 +126,15 @@ c3
 
 
 
-model_1 <- lm(salary_thou ~ white + male + straight + cisgendered,data=conde_nast)
+model_1 <- lm(salary_thou~white+male+straight+cisgendered,
+              data=conde_nast)
+model_2 <- lm(salary_thou~white+male+straight+cisgendered+fulltime,
+              data=conde_nast)
 
+model_3 <- lm(salary_thou~white+male+straight+cisgendered+fulltime+yrs_exp+yrs_role,
+              data=conde_nast)
 
-model_2 <- lm(salary_thou ~ white + male + straight + cisgendered+ yrs_exp+yrs_role,data=conde_nast)
-
-model_3 <- lm(salary_thou ~ white + male + straight + cisgendered+ yrs_exp+yrs_role+reports_total+fulltime,data=conde_nast)
+model_4 <- lm(salary_thou~white+male+straight+cisgendered+fulltime+yrs_exp+yrs_role+reports_dir+reports_ind,data=conde_nast)
 
 
 
@@ -136,7 +144,7 @@ model_3 <- lm(salary_thou ~ white + male + straight + cisgendered+ yrs_exp+yrs_r
 <<results=tex,echo=F>>=
 
 
-stargazer::stargazer(model_1,model_2,model_3, title="Predicting Salary", omit.stat=c("adj.rsq", "ser","f"), dep.var.labels=c("Salary in 1,000s USD"), covariate.labels=c("White","Male","Straight","Cisgendered","Years of Experience","Years in Current Role","Total reports","Full Time"))
+stargazer::stargazer(model_1,model_2,model_3,model_4, title="Predicting Salary", omit.stat=c("adj.rsq", "ser","f"), dep.var.labels=c("Salary in 1,000s USD"), covariate.labels=c("White","Male","Straight","Cisgendered","Full Time","Years of Experience","Years in Current Role","Direct reports","Indirect Reports"))
 
 
 

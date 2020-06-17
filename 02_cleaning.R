@@ -129,7 +129,11 @@ model_2 <- lm(salary_thou ~ white + male + straight + cisgendered+ yrs_exp+yrs_r
 model_3 <- lm(salary_thou ~ white + male + straight + cisgendered+ yrs_exp+yrs_role+reports_total+fulltime,data=conde_nast)
 
 
-stargazer::stargazer(model_1,model_2,model_3, title="Predicting Salary", omit.stat=c("adj.rsq", "ser","f"), dep.var.labels=c("Salary in 1,000s USD"), covariate.labels=c("White","Male","Straight","Cisgendered","Years of Experience","Years in Current Role","Total reports","Full Time")))
+stargazer::stargazer(model_1,model_2,model_3, title="Predicting Salary", 
+                     omit.stat=c("adj.rsq", "ser","f"), 
+                     dep.var.labels=c("Salary in 1,000s USD"), 
+                     covariate.labels=c("White","Male","Straight","Cisgendered","Years of Experience",
+                                        "Years in Current Role","Total reports","Full Time"))
 
 
 
